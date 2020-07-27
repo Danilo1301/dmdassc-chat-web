@@ -12,14 +12,16 @@ function disconnect() {
 }
 
 function showChannels() {
-  $("#channels-page").show();
-  $("#messages-page").hide();
+  document.getElementsByClassName("page-channels")[0].classList.remove("hide")
+  document.getElementsByClassName("page-loading")[0].classList.add("hide")
+  document.getElementsByClassName("page-messages")[0].classList.add("hide")
   sendData("get_channels_list");
 }
 
 function showMessages() {
-  $("#channels-page").hide();
-  $("#messages-page").show();
+  document.getElementsByClassName("page-channels")[0].classList.add("hide")
+  document.getElementsByClassName("page-loading")[0].classList.add("hide")
+  document.getElementsByClassName("page-messages")[0].classList.remove("hide")
   $(".messages button").remove()
 }
 
@@ -52,7 +54,7 @@ _events["add_message"] = add => {
 
   var message = add.message;
 
-  var button = $(`<button type="button" class="list-group-item list-group-item-action">${JSON.stringify(message)}</button>`);
+  var button = $(`<button type="button" class="list-group-item list-group-item-action">${(message.text)}</button>`);
   button.attr("id", "msg-"+message.id);
 
   if(add.after) {

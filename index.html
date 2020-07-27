@@ -9,6 +9,12 @@
 
     <link rel="stylesheet" href="index.css">
 
+    <style>
+     .hide {
+       display: none;
+     }
+    </style>
+
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -17,18 +23,34 @@
     <script src="index.js" defer></script>
   </head>
   <body>
+    <div class="page-loading">
+      <div class="alert alert-secondary m-5" role="alert">
 
-    <div id="channels-page">
+        <center>
+          <h4 class="alert-heading">Chat</h4>
+          <hr>
+          <p>Connecting to server...</p>
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </center>
+
+
+      </div>
+    </div>
+
+    <div class="page-channels  hide">
       <ul class="list-group channels">
       </ul>
     </div>
 
-    <div id="messages-page">
-      <ul class="list-group messages">
-      </ul>
+    <div class="page-messages hide">
       <input id="input-message"/>
       <button onclick="send()">Send</button>
       <button onclick="disconnect()">Leave channel</button>
+
+      <ul class="list-group messages">
+      </ul>
     </div>
 
   </body>
